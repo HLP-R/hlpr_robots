@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="poli_neck_head">
+
+    <xacro:macro name="poli_neck_head" params="parent *origin">
+
+        <joint name="head_yaw_joint" type="revolute">
+            <xacro:insert_block name="origin" />
+            <parent link="${parent}" />
+            <child link="head_yaw" />
+            <axis xyz="0 0 1"/>
+            <limit effort="0" velocity="0"/>
+        </joint>
+
+        <link name="head_yaw">
+          <inertial>
+            <origin xyz="-0.00051082 4.6611E-05 -0.0079247" rpy="0 0 0" />
+            <mass value="0.16588" />
+            <inertia
+              ixx="0.00020336"
+              ixy="3.9501E-09"
+              ixz="6.1826E-06"
+              iyy="0.00018544"
+              iyz="4.4503E-07"
+              izz="5.7673E-05" />
+          </inertial>
+          <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <mesh filename="package://poli_description/meshes/Yaw.STL" />
+            </geometry>
+            <material name="">
+              <color rgba="0.75294 0.75294 0.75294 1" />
+            </material>
+          </visual>
+          <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <mesh filename="package://poli_description/meshes/Yaw.STL" />
+            </geometry>
+          </collision>
+        </link>
+
+        <link name="head_pitch">
+          <inertial>
+            <origin xyz="0.061895 -0.074515 0.00018285" rpy="0 0 0" />
+            <mass value="1.6753" />
+            <inertia
+              ixx="0.012547"
+              ixy="-0.00028107"
+              ixz="-1.3825E-05"
+              iyy="0.019618"
+              iyz="-1.4168E-06"
+              izz="0.012573" />
+          </inertial>
+          <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <mesh filename="package://poli_description/meshes/Pitch.STL" />
+            </geometry>
+            <material name="">
+              <color rgba="0.75294 0.75294 0.75294 1" />
+            </material>
+          </visual>
+          <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <mesh filename="package://poli_description/meshes/Pitch.STL" />
+            </geometry>
+          </collision>
+        </link>
+
+        <joint name="head_pitch_joint" type="revolute">
+          <origin xyz="0 0 0" rpy="-1.5708 0 0" />
+          <parent link="head_yaw" />
+          <child link="head_pitch" />
+          <axis xyz="0 0 -1" />
+          <limit effort="0" velocity="0" />
+        </joint>
+
+    </xacro:macro>
+
+</robot>
