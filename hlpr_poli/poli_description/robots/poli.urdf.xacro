@@ -127,4 +127,5 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <origin xyz="0 0 0.131" rpy="0 0 0"/>
     </xacro:poli_neck_head>
 
+    <xacro:poli_neck_head_transmission/>
 </robot>

@@ -4,15 +4,15 @@
 
     <xacro:macro name="poli_neck_head" params="parent *origin">
 
-        <joint name="head_yaw_joint" type="revolute">
+        <joint name="pan_joint" type="revolute">
             <xacro:insert_block name="origin" />
             <parent link="${parent}" />
-            <child link="head_yaw" />
+            <child link="pan_link" />
             <axis xyz="0 0 1"/>
-            <limit effort="0" velocity="0"/>
+            <limit effort="6.0" lower="-1.570796326794897" upper="1.570796326794897" velocity="6.597"/>
         </joint>
 
-        <link name="head_yaw">
+        <link name="pan_link">
           <inertial>
             <origin xyz="-0.00051082 4.6611E-05 -0.0079247" rpy="0 0 0" />
             <mass value="0.16588" />
@@ -41,7 +41,7 @@
           </collision>
         </link>
 
-        <link name="head_pitch">
+        <link name="tilt_link">
           <inertial>
             <origin xyz="0.061895 -0.074515 0.00018285" rpy="0 0 0" />
             <mass value="1.6753" />
@@ -70,12 +70,12 @@
           </collision>
         </link>
 
-        <joint name="head_pitch_joint" type="revolute">
+        <joint name="tilt_joint" type="revolute">
           <origin xyz="0 0 0" rpy="-1.5708 0 0" />
-          <parent link="head_yaw" />
-          <child link="head_pitch" />
-          <axis xyz="0 0 -1" />
-          <limit effort="0" velocity="0" />
+          <parent link="pan_link" />
+          <child link="tilt_link" />
+          <axis xyz="0 0 1" />
+          <limit effort="6.0" lower="-1.047197551196598" upper="1.570796326794897" velocity="6.597"/>
         </joint>
 
     </xacro:macro>

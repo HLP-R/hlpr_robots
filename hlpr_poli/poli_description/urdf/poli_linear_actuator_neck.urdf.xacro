@@ -47,7 +47,7 @@
           <parent link="linear_actuator_fixed_link" />
           <child link="linear_actuator_link" />
           <axis xyz="0 0 1" />
-          <limit lower="0.0" upper="0.855" effort="1000" velocity="0.20"/>
+          <limit lower="0.0" upper="0.70" effort="1000" velocity="0.20"/>
           <dynamics damping="0.0" friction="0.0"/>
         </joint>
         

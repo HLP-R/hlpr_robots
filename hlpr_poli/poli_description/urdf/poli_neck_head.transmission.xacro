@@ -3,22 +3,22 @@
 
   <xacro:macro name="poli_neck_head_transmission">
 
-    <transmission name="head_yaw_trans">
+    <transmission name="pan_trans">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="head_yaw_joint">
+      <joint name="pan_joint">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
       </joint>
-      <actuator name="head_yaw_motor">
+      <actuator name="pan_motor">
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
 
-    <transmission name="head_pitch_trans">
+    <transmission name="tilt_trans">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="head_pitch_joint">
+      <joint name="tilt_joint">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
       </joint>
-      <actuator name="head_pitch_motor">
+      <actuator name="tilt_motor">
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
