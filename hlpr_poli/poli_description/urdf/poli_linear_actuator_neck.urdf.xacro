@@ -12,10 +12,13 @@
         
 	    <link name="linear_actuator_fixed_link">
 			<visual>
-                <origin xyz="0 0 0" rpy="0 0 0"/>
+			    <origin xyz="0 0 0" rpy="0 0 0"/>
 				  <geometry>
 					<mesh filename="package://poli_description/meshes/base_link.STL" />
 				</geometry>
+				  <material name="">
+				      <color rgba="0.75294 0.75294 0.75294 1" />
+				  </material>
 			</visual>
 			<collision>
 				<geometry>

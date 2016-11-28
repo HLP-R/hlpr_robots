@@ -30,10 +30,14 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <xacro:include filename="$(find poli_description)/urdf/poli_linear_actuator_neck.urdf.xacro" />
     <xacro:include filename="$(find poli_description)/urdf/poli_neck_head.urdf.xacro" />
 
+    <!-- Include sensor files -->
+    <xacro:include filename="$(find vector_description)/urdf/sensors/kinect_one_sensor.urdf.xacro" />
+    <xacro:include filename="$(find poli_description)/urdf/laser_sensors.urdf.xacro" />
+
     <!-- Include transmission Files -->
     <xacro:include filename="$(find poli_description)/urdf/poli_neck_head.transmission.xacro" />
     
-
+    <!-- Robot base -->
     <xacro:property name="M_PI" value="3.14159"/>
     <xacro:if value="$(optenv VECTOR_USE_PLATFORM_ODOMETRY false)">
         <gazebo>
@@ -126,6 +130,13 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <xacro:poli_neck_head parent="linear_actuator_fixed_link">
         <origin xyz="0 0 0.131" rpy="0 0 0"/>
     </xacro:poli_neck_head>
-
     <xacro:poli_neck_head_transmission/>
+
+    <!-- include the kinect sensor -->
+    <xacro:kinect_one_sensor prefix="kinect" parent="tilt_link">
+       <origin xyz="0.1125 -0.03425 0" rpy="${M_PI/2} 0 0" />
+    </xacro:kinect_one_sensor>
+
+    <!-- Include the lasers -->
+    <xacro:poli_lasers />
 </robot>
