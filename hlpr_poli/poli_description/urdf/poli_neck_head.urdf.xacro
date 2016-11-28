@@ -4,12 +4,28 @@
 
     <xacro:macro name="poli_neck_head" params="parent *origin">
 
-        <joint name="pan_joint" type="revolute">
+        <joint name="pan_base_joint" type="fixed">
             <xacro:insert_block name="origin" />
             <parent link="${parent}" />
+            <child link="pan_base_link" />
+        </joint>
+
+        <link name="pan_base_link">
+            <inertial>
+                <mass value="0.1"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
+                         iyy="0.01"  iyz="0.0"
+                         izz="0.01" />
+            </inertial>
+        </link>
+
+        <joint name="pan_joint" type="revolute">
+            <origin xyz="0 0 0.131" rpy="0 0 0" />
+            <parent link="pan_base_link" />
             <child link="pan_link" />
             <axis xyz="0 0 1"/>
-            <limit effort="6.0" lower="-1.570796326794897" upper="1.570796326794897" velocity="6.597"/>
+            <limit effort="6.0" lower="-0.523599" upper="0.523599" velocity="6.597"/>
         </joint>
 
         <link name="pan_link">
@@ -41,6 +57,14 @@
           </collision>
         </link>
 
+        <joint name="tilt_joint" type="revolute">
+          <origin xyz="0 0 0" rpy="-1.570796326794897 0 0" />
+          <parent link="pan_link" />
+          <child link="tilt_link" />
+          <axis xyz="0 0 1" />
+          <limit effort="6.0" lower="-0.174533" upper="0.785398" velocity="6.597"/>
+        </joint>
+
         <link name="tilt_link">
           <inertial>
             <origin xyz="0.061895 -0.074515 0.00018285" rpy="0 0 0" />
@@ -69,14 +93,6 @@
             </geometry>
           </collision>
         </link>
-
-        <joint name="tilt_joint" type="revolute">
-          <origin xyz="0 0 0" rpy="-1.5708 0 0" />
-          <parent link="pan_link" />
-          <child link="tilt_link" />
-          <axis xyz="0 0 1" />
-          <limit effort="6.0" lower="-1.047197551196598" upper="1.570796326794897" velocity="6.597"/>
-        </joint>
 
     </xacro:macro>
 
