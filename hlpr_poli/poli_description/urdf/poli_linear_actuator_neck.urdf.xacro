@@ -10,39 +10,34 @@
             <child link="linear_actuator_fixed_link" />
         </joint>
         
-	    <link name="linear_actuator_fixed_link">
-			<visual>
-			    <origin xyz="0 0 0" rpy="0 0 0"/>
-				  <geometry>
-					<mesh filename="package://poli_description/meshes/base_link.STL" />
-				</geometry>
-				  <material name="">
-				      <color rgba="0.75294 0.75294 0.75294 1" />
-				  </material>
-			</visual>
-			<collision>
-				<geometry>
-					<mesh filename="package://poli_description/meshes/base_link.STL" />
-				</geometry>
-			</collision>
+	<link name="linear_actuator_fixed_link">
+		<visual>
+		    <origin xyz="0 0 0" rpy="0 0 0"/>
+  		    <geometry>
+			<mesh filename="package://poli_description/meshes/base_link.STL" />
+		    </geometry>
+		    <material name="">
+		      <color rgba="0.75294 0.75294 0.75294 1" />
+		    </material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 -0.485" rpy="0 0 0"/>
+			<geometry>
+			    <box size="0.09 0.09 1.2" />
+			</geometry>
+		</collision>
             <inertial>
-              <origin xyz="-0.011801 0.024796 -0.63503" rpy="0 0 0" />
+              <origin xyz="-0.011319 0.023009 -0.586408" rpy="0 0 0" />
               <mass value="19.332" />
               <inertia
-                ixx="2.4716"
-                ixy="-0.0011724"
-                ixz="0.0085341"
-                iyy="2.4326"
-                iyz="-0.17433"
-                izz="0.066996" />
+                ixx="0.000398"
+                ixy="0.0"
+                ixz="-0.000002"
+                iyy="0.000393"
+                iyz="0.000025"
+                izz="0.000009" />
             </inertial>
-
-		    <!--inertial>
-                <mass value="5.098044" />
-                <origin xyz="0.0 0.0 0.5" rpy="0 0 0"/>
-                <inertia ixx="0.02"  ixy="0.0"  ixz="1.0" iyy="-0.03"  iyz="-0.02" izz="0.0" />
-		    </inertial-->			    
-		</link>
+	</link>
 
         <joint name="linear_joint" type="prismatic">
           <!--origin xyz="0.038771 -0.000254 -0.10409" rpy="0 0 0" /-->

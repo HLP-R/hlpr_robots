@@ -29,6 +29,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <xacro:include filename="$(find vector_description)/urdf/manipulation/robotiq/robotiq_85_gripper.urdf.xacro" />
     <xacro:include filename="$(find poli_description)/urdf/poli_linear_actuator_neck.urdf.xacro" />
     <xacro:include filename="$(find poli_description)/urdf/poli_neck_head.urdf.xacro" />
+    <xacro:include filename="$(find poli_description)/urdf/poli_body.urdf.xacro" />
 
     <!-- Include sensor files -->
     <xacro:include filename="$(find vector_description)/urdf/sensors/kinect_one_sensor.urdf.xacro" />
@@ -79,13 +80,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
     <xacro:vector_base name="base"/>
     
-    <!--linear actuator-->
-    <xacro:if value="$(optenv VECTOR_HAS_LINEAR_ACTUATOR true)">
-        <xacro:vector_linear_actuator parent="base_chassis_link">
-            <origin xyz="0.22806971 0 0.46024800" rpy="0 0 0" />
-        </xacro:vector_linear_actuator>
-    </xacro:if>
-    
     <!-- Arms -->
     <xacro:if value="$(optenv VECTOR_HAS_KINOVA_ARM false)"> 
         <xacro:jaco_robot prefix="right_" parent="linear_actuator_link">
@@ -127,6 +121,11 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <origin xyz="0.2015 0 1.3642" rpy="0 0 0" />
     </xacro:poli_linear_actuator>
 
+    <!-- Poli's coat -->
+    <xacro:poli_body parent="base_chassis_link">
+        <origin xyz="0 0 0" rpy="0 0 -${M_PI/2}" />
+    </xacro:poli_body>
+ 
     <xacro:poli_neck_head parent="linear_actuator_fixed_link">
         <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:poli_neck_head>
