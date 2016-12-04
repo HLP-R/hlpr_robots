@@ -25,7 +25,7 @@
             <parent link="pan_base_link" />
             <child link="pan_link" />
             <axis xyz="0 0 1"/>
-            <limit effort="6.0" lower="-0.523599" upper="0.523599" velocity="6.597"/>
+            <limit effort="6.0" lower="-0.75" upper="0.75" velocity="6.597"/>
         </joint>
 
         <link name="pan_link">
@@ -62,7 +62,7 @@
           <parent link="pan_link" />
           <child link="tilt_link" />
           <axis xyz="0 0 1" />
-          <limit effort="6.0" lower="-0.174533" upper="0.785398" velocity="6.597"/>
+          <limit effort="6.0" lower="-0.25" upper="0.589" velocity="6.597"/>
         </joint>
 
         <link name="tilt_link">
