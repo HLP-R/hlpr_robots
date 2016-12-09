@@ -24,6 +24,9 @@
                     <geometry>
                         <box size="0.14 0.275 0.165"/>
                     </geometry>
+                    <material name="">
+                      <color rgba="0.75294 0.75294 0.75294 1" />
+                    </material>
                 </visual>
             </xacro:if>
             <collision>
