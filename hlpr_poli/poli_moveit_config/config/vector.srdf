@@ -124,6 +124,7 @@
     <disable_collisions link1="kinect_ir_link" link2="right_robotiq_85_right_knuckle_link" reason="Never" />
     <disable_collisions link1="kinect_ir_link" link2="right_shoulder_link" reason="Never" />
     <disable_collisions link1="kinect_ir_link" link2="right_upper_arm_link" reason="Never" />
+    <disable_collisions link1="kinect_ir_link" link2="right_wrist_1_link" reason="Never" />
     <disable_collisions link1="kinect_ir_link" link2="right_wrist_2_link" reason="Never" />
     <disable_collisions link1="kinect_ir_link" link2="right_wrist_3_link" reason="Never" />
     <disable_collisions link1="kinect_ir_link" link2="tilt_link" reason="Default" />
@@ -158,7 +159,6 @@
     <disable_collisions link1="poli_body_link" link2="rear_laser_link" reason="Never" />
     <disable_collisions link1="poli_body_link" link2="right_base_link" reason="Never" />
     <disable_collisions link1="poli_body_link" link2="right_shoulder_link" reason="Never" />
-    <disable_collisions link1="poli_body_link" link2="right_upper_arm_link" reason="Never" />
     <disable_collisions link1="rear_laser_link" link2="right_base_link" reason="Never" />
     <disable_collisions link1="rear_laser_link" link2="right_forearm_link" reason="Never" />
     <disable_collisions link1="rear_laser_link" link2="right_robotiq_85_base_link" reason="Never" />
