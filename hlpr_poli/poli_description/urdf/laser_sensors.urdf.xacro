@@ -101,13 +101,13 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <xacro:if value="$(optenv VECTOR_HAS_SECOND_2D_LASER false)">
             <!-- SICK TIM Sensor -->
             <xacro:if value="$(optenv VECTOR_LASER2_IS_SICK_TIM false)">
-                <xacro:sick_tim laser_prefix="$(optenv LASER2_PREFIX base)" parent="$(optenv VECTOR_PARENT_LINK base_chassis_link)">
+                <xacro:sick_tim laser_prefix="$(optenv LASER2_PREFIX rear)" parent="$(optenv VECTOR_PARENT_LINK base_chassis_link)">
                     <origin xyz="$(optenv LASER2_XYZ 0.35 0 0.2)" rpy="$(optenv LASER2_RPY 3.14159 0 0)" />
                 </xacro:sick_tim>
             </xacro:if>
 
             <xacro:if value="$(optenv VECTOR_LASER2_IS_HOKUYO false)">
-                <xacro:hokuyo_ust10lx laser_prefix="$(optenv LASER2_PREFIX base)" parent="$(optenv VECTOR_PARENT_LINK base_chassis_link)">
+                <xacro:hokuyo_ust10lx laser_prefix="$(optenv LASER2_PREFIX rear)" parent="$(optenv VECTOR_PARENT_LINK base_chassis_link)">
                     <origin xyz="$(optenv LASER2_XYZ 0.35 0 0.2)" rpy="$(optenv LASER2_RPY 3.14159 0 0)" />
                 </xacro:hokuyo_ust10lx>
             </xacro:if>
