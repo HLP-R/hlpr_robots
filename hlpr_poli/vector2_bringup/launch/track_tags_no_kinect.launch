@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 	<param name="sim_time" value="true"/>
-	<arg name="marker_size" default="4.4" />
-	<!--arg name="marker_size" default="9.0" /-->
+	<!--arg name="marker_size" default="4.4" /-->
+	<arg name="marker_size" default="9.0" />
 	<arg name="max_new_marker_error" default="0.08" />
 	<arg name="max_track_error" default="0.2" />
 	<arg name="cam_image_topic" default="/kinect/hd/image_color" />
