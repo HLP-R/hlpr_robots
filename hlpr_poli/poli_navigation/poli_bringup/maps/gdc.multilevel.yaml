@@ -1,0 +1,9 @@
+maps:
+  2ndFloor:
+    yaml: package://poli_bringup/maps/floor_2/2.yaml
+    origin: [0, 0, 0, 0, 0, 0]
+    data_directory: package://poli_bringup/maps/floor_2
+  1stFloor:
+    yaml: package://poli_bringup/maps/floor_1/1s.yaml
+    origin: [0, 0, 0, 0, 0, 0]
+    data_directory: package://poli_bringup/maps/floor_1
