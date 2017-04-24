@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Arguments for the artracking -->
+    <arg name="sim" default="false"/>
+    <arg name="verbose" default="false"/>
+    <arg name="use_kinect" default="true"/>
+    <arg name="marker_size" default="2.0"/>
+    <arg name="cam_image_topic" value="/kinect/qhd/points" />
+    <arg name="cam_info_topic" value="/kinect/qhd/camera_info" />
+    <arg name="output_frame" value="/base_link" />
+    <arg name="dict_path" default="$(find hlpr_speech_recognition)/data/st_davids.dic"/>
+    <arg name="kps_path" default="$(find hlpr_speech_recognition)/data/st_davids.txt"/>
+    <arg name="log_kinect" default="false"/>
+    <arg name="log_nav" default="false"/>
+
+   
+    <!-- Start the microphone listening for the kinect -->
+    <include file="$(find hlpr_speech_recognition)/launch/speech_microphone.launch">
+        <arg name="dict_path" value="$(arg dict_path)"/>
+        <arg name="kps_path" value="$(arg kps_path)"/>
+    </include>
+
+    <!-- Start the ar tracker nodes -->
+    <group if="$(arg use_kinect)">
+        <include file="$(find vector2_bringup)/launch/track_tags.launch">
+                <arg name="verbose" value="$(arg verbose)"/>
+                <arg name="marker_size" value="$(arg marker_size)"/>
+                <arg name="cam_image_topic" value="$(arg cam_image_topic)" />
+                <arg name="cam_info_topic" value="$(arg cam_info_topic)" />
+                <arg name="output_frame" value="$(arg output_frame)" />
+        </include>
+    </group>
+
+    <group unless="$(arg use_kinect)">
+        <include file="$(find vector2_bringup)/launch/track_tags_no_kinect.launch">
+                <arg name="verbose" value="$(arg verbose)"/>
+                <arg name="marker_size" value="$(arg marker_size)"/>
+                <arg name="cam_image_topic" value="$(arg cam_image_topic)" />
+                <arg name="cam_info_topic" value="$(arg cam_info_topic)" />
+                <arg name="output_frame" value="$(arg output_frame)" />
+        </include>
+    </group>
+
+    <!-- Start up the logger for navigation topics -->
+    <group if="$(arg log_nav)">
+        <include file="$(find data_logger_bag)/launch/record.launch">
+            <arg name="node_name" value="data_logger_nav"/>
+            <arg name="record_topics" value="joint_states data_logger_flag odom /vector/right_gripper/stat "/>
+            <arg name="logger_flag" value="data_logger_base_flag"/>
+            <arg name="datapath" value="data/seton/robot_nav"/>
+        </include>
+    </group>
+    
+    
+    <!-- Startup the logger for kinect topics -->
+    <group if="$(arg log_kinect)">
+        <include file="$(find data_logger_bag)/launch/record.launch">
+            <arg name="node_name" value="data_logger_kinect"/>
+            <arg name="record_topics" value="/kinect/qhd/image_color_rect/compressed /kinect/qhd/image_depth_rect    /compressed /kinect/qhd/camera_info kinect_logger_flag odom /vector/right_gripper/stat logging_settings joint_states base_scan rear_scan"/>
+            <arg name="logger_flag" value="kinect_logger_flag"/>
+            <arg name="datapath" value="data/seton/kinect"/>
+        </include>
+    </group>
+
+	<!-- Include Astra launch files --> 
+    <!-- <include file="$(find vector2_bringup)/launch/person_tracking.launch"/>
+    -->
+</launch>
