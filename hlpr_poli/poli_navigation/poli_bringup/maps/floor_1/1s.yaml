@@ -1,0 +1,7 @@
+image: /home/ddroids/catkin_ws/src/common/hlpr_robots/hlpr_poli/poli_navigation/poli_bringup/maps/floor_1/1s.pgm
+resolution: 0.050000
+origin: [-51.224998, -51.224998, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+
