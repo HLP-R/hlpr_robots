@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Arguments for the artracking -->
+    <arg name="sim" default="false"/>
+    <arg name="verbose" default="false"/>
+    <arg name="use_kinect" default="true"/>
+    <arg name="marker_size" default="4.4"/>
+    <arg name="cam_image_topic" value="/kinect/qhd/points" />
+    <arg name="cam_info_topic" value="/kinect/qhd/camera_info" />
+    <arg name="output_frame" value="/base_link" />
+    <arg name="dict_path" default="$(find hlpr_speech_recognition)/data/seton.dic"/>
+    <arg name="kps_path" default="$(find hlpr_speech_recognition)/data/seton.txt"/>
+   
+    <!-- Start the microphone listening for the kinect -->
+    <include file="$(find hlpr_speech_recognition)/launch/speech_microphone.launch">
+        <arg name="dict_path" value="$(arg dict_path)"/>
+        <arg name="kps_path" value="$(arg kps_path)"/>
+    </include>
+
+</launch>
