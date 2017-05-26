@@ -141,10 +141,11 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <!-- Include the lasers -->
     <xacro:poli_lasers />
 
-    <!-- Include the new RGBD Astra -->
+    <!-- Include the new RGBD Astra 
     <xacro:sensor_astra parent="base_chassis_link">
        <origin xyz="0.30 -0.1 0.3125" rpy="0 0 0" />
     </xacro:sensor_astra>
+    -->
 
     <!-- Include front sonar -->
     <xacro:sensor_sonar parent="base_chassis_link">
@@ -152,12 +153,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     </xacro:sensor_sonar>
 
 
-    <!-- Include the basket -->
+    <!-- Include the basket 
     <xacro:basket number="1" parent="base_chassis_link" visual="true">
        <origin xyz="0.34 0.1325 0.37" rpy="0 0 0" />
     </xacro:basket>
     <xacro:basket number="2" parent="base_chassis_link" visual="false">
        <origin xyz="0.34 -0.1325 0.37" rpy="0 0 0" />
     </xacro:basket>
-
+    -->
 </robot>
