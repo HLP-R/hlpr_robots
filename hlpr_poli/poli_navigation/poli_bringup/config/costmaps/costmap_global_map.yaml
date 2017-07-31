@@ -1,0 +1,9 @@
+global_costmap:
+    static_map: true
+    rolling_window: false
+    global_frame: map
+    track_unknown_space: true
+
+    plugins:
+        - {name: static,                  type: "costmap_2d::StaticLayer"}
+        - {name: inflation,               type: "costmap_2d::InflationLayer"}

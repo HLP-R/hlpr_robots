@@ -1,0 +1,13 @@
+global_costmap:
+  global_frame: /map
+  robot_base_frame: base_link
+  update_frequency: 5.0
+  static_map: true
+  track_unknown_space: true
+  rolling_window: false
+  plugins:
+      - {name: static,  type: "costmap_2d::StaticLayer"}
+      - {name: gps_boundaries,       type: "dd_costmap_plugins::PolygonObstacleLayer"}
+      - {name: obstacles_costmap2d, type: "costmap_2d::ObstacleLayer"}
+      - {name: inflation,            type: "costmap_2d::InflationLayer"}
+

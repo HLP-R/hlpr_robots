@@ -1,0 +1,44 @@
+<launch>
+<arg name="map_file" default="basement_lab"/>
+    <arg name="run_map_server" default="false"/>
+    <arg name="map_is_multilevel" default="true"/>
+    <arg name="load_waypoints" default="false"/>
+    <arg name="run_waypoints" default="false"/>
+    <arg name="sim" default="true"/>
+    <arg name="gui" default="true"/>
+
+    <param name="map_file" value="$(arg map_file)"/>
+
+    <!-- Run the map server -->
+    <group if="$(arg run_map_server)">
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find poli_bringup)/maps/$(arg map_file).yaml" />
+    </group>
+
+    <!-- Run vector_move_base action client for tracking status -->
+    <node pkg="vector_ros" name="vector_move_base" type="vector_move_base" output="screen" clear_params="true">
+        <param name="using_amcl" value="true"/>
+        <param name="global_frame" value="/map"/>
+        <param name="goal_timeout_sec" value="600"/>
+        <param name="load_waypoints" value="$(arg load_waypoints)"/>
+        <param name="run_waypoints" value="$(arg run_waypoints)"/>
+        <param name="sim" value="$(arg sim)"/>
+    </node>
+
+    <!--- Run amcl -->
+    <node pkg="amcl" type="amcl" name="amcl" output="screen" clear_params="true">
+        <param name="use_map_topic" value="true"/>
+        <rosparam command="load" file="$(find vector_navigation_apps)/config/common/amcl.yaml"/>
+        <remap from="scan" to="/vector/scan_multi" />
+    </node>
+
+
+    <!--- Run Move Base -->
+    <include file="$(find poli_bringup)/launch/move_base.launch">
+        <arg name="no_static_map" value="false"/>
+    </include>
+
+    <!--- Start visuailization -->
+    <group if="$(arg gui)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find poli_bringup)/rviz/dd_robot_map.rviz" output="screen"/>
+    </group>
+</launch>

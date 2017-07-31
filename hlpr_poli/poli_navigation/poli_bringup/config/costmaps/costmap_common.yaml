@@ -1,0 +1,38 @@
+# 2D Costmap parameters
+# http://www.ros.org/wiki/costmap_2d
+
+### Coordinate frame and tf parameters ###
+robot_base_frame:           base_link
+transform_tolerance:        0.25
+
+# ---Vector footprint (Meters):---
+footprint: [[0.45,0.275809],[0.72,0.0],[0.45,-0.275809],[-0.365164,-0.275809],[-0.365164,0.275809]]
+#footprint: [[0.72,0.27580937],[0.72,-0.27580937],[-0.365163875,-0.27580937],[-0.365163875,0.27580937]]
+#footprint: [[0.32,0.4],[0.72,0.0],[0.32,-0.4],[-0.365164,-0.275809],[-0.365164,0.275809]]
+
+inflation:
+    inflation_radius: 0.5
+
+obstacles_costmap2d:
+    observation_sources: vector_front_scan #vector_rear_scan #kinect_scan
+    
+    vector_front_scan: {
+                sensor_frame:            base_laser_link,
+                data_type:               LaserScan,
+                topic:                   /vector/base_scan_max_filtered,
+                marking:                 true,
+                clearing:                true,
+                obstacle_range: 2.75,
+                raytace_range: 3.0,
+    }
+    vector_rear_scan: {
+                sensor_frame:            rear_laser_link,
+                data_type:               LaserScan,
+                topic:                   /vector/rear_scan,
+                marking:                 true,
+                clearing:                true,
+                obstacle_range: 2.75,
+                raytace_range: 3.0,
+    }
+    kinect_scan: {data_type: PointCloud2, topic: /kinect/depth_registered/points, marking: true, clearing: true, inf_is_valid: true}
+

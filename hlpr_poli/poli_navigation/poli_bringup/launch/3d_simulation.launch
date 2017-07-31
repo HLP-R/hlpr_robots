@@ -1,0 +1,19 @@
+<launch>
+
+    <arg name="robot_spawn_loc" default="-x -6.48 -y 1.36 -yaw -3.132" />
+    <arg name="model" default="gdc_multifloor"/>
+    <arg name="world" value="worlds/empty.world"/>
+
+    <!-- Actually launch the file -->
+    <include file="$(find hlpr_gazebo)/launch/vector.launch">
+        <arg name="room" value="$(find poli_bringup)/launch/$(arg model).launch" />
+        <arg name="world" value="$(arg world)" />
+        <arg name="robot_description" value="$(find poli_description)/launch/poli_upload.launch"/>
+        <arg name="moveit_launch" value="false" />
+        <arg name="wpi_jaco_launch" value="false" />
+        <arg name="use_wpi_jaco_exec" value="false" />
+        <arg name="robot_spawn_loc" value="$(arg robot_spawn_loc)" />
+    </include>
+
+
+</launch>

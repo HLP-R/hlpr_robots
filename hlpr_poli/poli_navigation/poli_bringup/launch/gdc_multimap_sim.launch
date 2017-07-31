@@ -2,20 +2,20 @@
 
 <!-- This file should be launched along side a 3d gazebo simulation (likely from poli_description) -->
 
-<arg name="map_file" default="$(find poli_bringup)/maps/gdc.multilevel.yaml" />
+    <arg name="map_file" default="$(find poli_bringup)/maps/gdc.multilevel.yaml" />
 
-<!-- Start Rviz and navigation stack from *poli_config* branch of vector_v1 -->
+    <!-- Start navigation stack from *poli_config* branch of vector_v1 -->
 
-<include file="$(find dd_simulation)/launch/2d_rviz_simulation.launch">
-    <arg name="map_is_multilevel" value="true"/>
-    <arg name="run_map_server" value="false"/>
-    <arg name="sim" value="true"/>
-    <arg name="map_file" value="1s"/>
-</include>
+    <include file="$(find poli_bringup)/launch/navigation.launch">
+        <arg name="map_is_multilevel" value="true"/>
+        <arg name="run_map_server" value="false"/>
+        <arg name="sim" value="true"/>
+        <arg name="map_file" value="1s"/>
+    </include>
 
-<!-- Start multilevel nodes and utilities -->
-<include file="$(find poli_bringup)/launch/multi_map_nav.launch">
-    <arg name="map_file" value="$(arg map_file)"/>
-</include>
+    <!-- Start multilevel nodes and utilities -->
+    <include file="$(find poli_bringup)/launch/multi_map_nav.launch">
+        <arg name="map_file" value="$(arg map_file)"/>
+    </include>
 
 </launch>

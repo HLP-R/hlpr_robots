@@ -1,0 +1,6 @@
+<launch>
+    <!-- Spawn the building model -->
+    <node name="spawn_room" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find poli_bringup)/meshes/gdc_multifloor.sdf -model room"  respawn="false" output="screen"/>
+
+</launch>
+
