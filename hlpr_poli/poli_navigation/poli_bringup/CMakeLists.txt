@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 2.8.3)
 project(poli_bringup)
 
 find_package(catkin REQUIRED COMPONENTS
-  multi_level_map_msgs
-  multi_level_map_server
-  multi_level_map_utils
   roscpp
   rospy
 )
